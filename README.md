@@ -26,4 +26,17 @@ To use the NSFW classification code:
 
 Please refer to the code in the `flacon7b.ipynb` notebook for the detailed implementation.
 
-Note: Running the training code may take time and require sufficient computational resources.
+Note: Running the training code may take time and require sufficient computational resources(but can be run on a free google colab version).
+## Run the model
+```
+text = "your input here"
+
+inputs = tokenizer(text, return_tensors="pt")
+
+inputs.pop("token_type_ids", None)
+
+outputs = model.generate(**inputs, max_length=100)
+
+print(tokenizer.decode(outputs[0], skip_special_tokens=True))
+
+```
